@@ -1,42 +1,55 @@
-.login-button {
+.nav-bar-wrapper {
   display: flex;
-  justify-content: flex-end;
-  margin: 20px;
-}
-.nav-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.menu-area {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
 
-  & .menu-list {
-    list-style: none;
+  & .login-button {
+    order: 0;
     display: flex;
-
-    & li {
-      padding: 10px;
-      text-transform: uppercase;
-    }
-  }
-
-  & .search-wrap {
-    display: flex;
-    align-items: center;
+    justify-content: flex-end;
     gap: 4px;
-    border-bottom: 0.5px solid #000;
+    padding: 16px;
+  }
+  & .logo {
+    order: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  & .menu-area {
+    order: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
 
-    & .fa-search {
+    & .menu-list {
+      display: flex;
+
+      & li {
+        padding: 16px;
+        text-transform: uppercase;
+      }
     }
-    & input {
-      border: 0;
-      padding: 8px;
 
-      &:focus {
-        outline: none;
+    & .search-wrap {
+      width: max-content;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      border-bottom: 0.5px solid #000;
+      position: relative;
+
+      & input {
+        width: calc(100% - 48px);
+        padding: 8px;
+      }
+
+      & .fa-xmark {
+        cursor: pointer;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
       }
     }
   }

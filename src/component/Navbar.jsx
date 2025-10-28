@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
@@ -13,25 +13,36 @@ library.add(fas, far, fab);
 // nav + Search Bar
 
 const Navbar = () => {
+  const [searchText, setSearchText] = useState("");
   const MENU_LIST = ["women", "men", "kids", "home"];
 
+  const handleDelete = () => {
+    setSearchText("");
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleDelete();
+      console.log("TODO: 검색 기능 채워넣기");
+      // handleSubmit(); // 작성한 검색어 검색 요청 함수
+    }
+  };
+
   return (
-    <div>
-      <div className="login-button">
-        <FontAwesomeIcon icon="fa-solid fa-user" />
-        <FontAwesomeIcon icon="fa-regular fa-user" />
-        <div>로그인</div>
-      </div>
-      <div className="nav-section">
-        <h1>
+    <div className="nav-bar-wrapper">
+      <h1 className="logo">
+        <a href="#">
           <img
             width={128}
             src="https://brandyhq.com/wp-content/uploads/2024/12/H-and-M-Logo.jpg"
             alt="H&M Logo"
           />
-        </h1>
+        </a>
+      </h1>
+      <div className="login-button">
+        <FontAwesomeIcon icon="fa-regular fa-user" />
+        <div>로그인</div>
       </div>
-
       <nav className="menu-area">
         <ul className="menu-list">
           {MENU_LIST.map((menu) => (
@@ -40,7 +51,18 @@ const Navbar = () => {
         </ul>
         <div className="search-wrap">
           <FontAwesomeIcon icon="fa-solid fa-search" />
-          <input type="text" name="" id="" placeholder="검색" />
+          <input
+            type="text"
+            name=""
+            id=""
+            placeholder="검색"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+            onKeyDown={handleKeyDown}
+          />
+          {searchText && (
+            <FontAwesomeIcon icon="fa-solid fa-xmark" onClick={handleDelete} />
+          )}
         </div>
       </nav>
     </div>
