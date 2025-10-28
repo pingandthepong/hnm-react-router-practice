@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
+import Navbar from "./component/Navbar";
 import ProductAll from "./page/ProductAll";
 import Login from "./page/Login";
 import ProductDetail from "./page/ProductDetail";
@@ -10,7 +11,8 @@ import ProductDetail from "./page/ProductDetail";
 // 2. 검색
 
 // * User Story *
-// TODO: 1. 전체상품페이지, 로그인페이지, 상품디테일페이지
+// DONE: 1. 전체상품페이지, 로그인페이지, 상품디테일페이지
+// TODO: 1-1. 내비게이션 바
 // TODO: 2. 전체상품페이지: 전체 상품을 볼 수 있다.
 // TODO: 3. 로그인페이지: 로그인 페이지가 나옴
 // TODO: 4. 상품디테일 클릭 시, isLogin ? 상품디테일페이지 : 로그인페이지
@@ -21,6 +23,7 @@ import ProductDetail from "./page/ProductDetail";
 function App() {
   return (
     <>
+      <Navbar />
       <Routes>
         <Route path="/" element={<ProductAll />} />
         <Route path="/login" element={<Login />} />
