@@ -37,11 +37,8 @@ const Navbar = ({ authenticate }) => {
   ];
 
   return (
-    <div className="nav-bar-wrapper">
-      <Dropdown
-        className="dropdown-wide"
-        // show={}
-        onToggle={(open) => setIsOpen(open)}>
+    <>
+      <Dropdown className="dropdown-wide" onToggle={(open) => setIsOpen(open)}>
         <Dropdown.Toggle variant="white" id="dropdown-common">
           새로운 회원 특별가 제품과 회원 전용 이벤트를 만나보세요!
           {isOpen ? (
@@ -58,42 +55,51 @@ const Navbar = ({ authenticate }) => {
           ))}
         </Dropdown.Menu>
       </Dropdown>
-      <Link to="/" className="logo">
-        <h1 className="a11y-hidden">H&M</h1>
-        <img
-          width={128}
-          src="https://brandyhq.com/wp-content/uploads/2024/12/H-and-M-Logo.jpg"
-          alt="H&M Logo"
-        />
-      </Link>
-      <Link to="/Login" className="login-button">
-        <FontAwesomeIcon icon="fa-regular fa-user" />
-        <div>{authenticate ? "로그아웃" : "로그인"}</div>
-      </Link>
-      <nav className="menu-area">
-        <h2 className="a11y-hidden">Global Navigation</h2>
-        <ul className="menu-list">
-          {MENU_LIST.map((menu) => (
-            <li key={menu}>{menu}</li>
-          ))}
-        </ul>
-        <div className="search-wrap">
-          <FontAwesomeIcon icon="fa-solid fa-search" />
-          <input
-            type="text"
-            name=""
-            id=""
-            placeholder="검색"
-            value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
-            onKeyDown={handleKeyDown}
+
+      <div className="nav-bar-wrapper">
+        <Link to="/" className="logo">
+          <h1 className="a11y-hidden">H&M</h1>
+          <img
+            width={128}
+            src="https://brandyhq.com/wp-content/uploads/2024/12/H-and-M-Logo.jpg"
+            alt="H&M Logo"
           />
-          {searchText && (
-            <FontAwesomeIcon icon="fa-solid fa-xmark" onClick={handleDelete} />
-          )}
-        </div>
-      </nav>
-    </div>
+        </Link>
+
+        <nav className="menu-area">
+          <h2 className="a11y-hidden">Global Navigation</h2>
+          <ul className="menu-list">
+            {MENU_LIST.map((menu) => (
+              <li key={menu}>{menu}</li>
+            ))}
+          </ul>
+          <div className="icons-wrap">
+            <div className="search-wrap">
+              <FontAwesomeIcon icon="fa-solid fa-search" />
+              <input
+                type="text"
+                name=""
+                id=""
+                placeholder="검색"
+                value={searchText}
+                onChange={(e) => setSearchText(e.target.value)}
+                onKeyDown={handleKeyDown}
+              />
+              {searchText && (
+                <FontAwesomeIcon
+                  icon="fa-solid fa-xmark"
+                  onClick={handleDelete}
+                />
+              )}
+            </div>
+            <Link to="/Login" className="login-button">
+              <FontAwesomeIcon icon="fa-regular fa-user" />
+              <div>{authenticate ? "Log Out" : "Log In"}</div>
+            </Link>
+          </div>
+        </nav>
+      </div>
+    </>
   );
 };
 
