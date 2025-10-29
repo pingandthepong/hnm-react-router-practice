@@ -86,13 +86,8 @@
   }
 }
 
-.login-kakao {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
+.btn-kakao {
   background: #fee500;
   color: #191919;
-  width: 240px;
-  padding: 8px;
+  padding: 12px;
 }
