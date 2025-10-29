@@ -31,20 +31,20 @@ const Login = () => {
       <Container>
         <Row>
           <Col>
-            <h1>로그인</h1>
+            <h1 className="title">로그인</h1>
           </Col>
         </Row>
         <Row>
           <Col className="d-grid">
-            <button className="btn-kakao">
+            <button className="custom-btn btn-kakao">
               <FontAwesomeIcon icon="fa-brands fa-kakao-talk" />
               카카오로 로그인
             </button>
           </Col>
         </Row>
         <Row>
-          <p>OR</p>
-          <p>
+          <p className="hr">OR</p>
+          <p className="login-desc">
             이메일로 로그인하거나 비회원이시면 계정에서 사용할 이메일 주소를
             입력하세요.
           </p>
@@ -57,7 +57,9 @@ const Login = () => {
                 <Form noValidate onSubmit={handleSubmit}>
                   <Row className="mb-3">
                     <Form.Group as={Col} md="4" controlId="validationUserEmail">
-                      <Form.Label>이메일</Form.Label>
+                      <Form.Label className="title after-valid">
+                        이메일
+                      </Form.Label>
                       <InputGroup hasValidation>
                         <InputGroup.Text id="inputGroupPrepend">
                           <FontAwesomeIcon icon="fa-solid fa-user" />
@@ -70,6 +72,7 @@ const Login = () => {
                           value={values.userEmail}
                           onChange={handleChange}
                           isInvalid={touched.userEmail && !!errors.userEmail}
+                          autoComplete="off"
                         />
                         <Form.Control.Feedback type="invalid">
                           {errors.userEmail}
@@ -79,10 +82,10 @@ const Login = () => {
                   </Row>
                   <Row className="mb-3">
                     <div className="d-grid">
-                      <Button variant="dark" type="submit">
+                      <Button variant="dark" type="submit" className="bdrs-0">
                         계속하기
                       </Button>
-                      <p className="text-sm">
+                      <p className="hr m-sm">
                         <FontAwesomeIcon icon="fa-solid fa-lock" />
                         모든 데이터는 안전하게 보호됩니다.
                       </p>

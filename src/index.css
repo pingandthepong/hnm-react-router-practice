@@ -32,3 +32,6 @@ a {
 .ta-c {
   text-align: center;
 }
+.bdrs-0 {
+  border-radius: 0 !important;
+}

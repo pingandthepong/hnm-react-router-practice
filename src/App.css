@@ -86,8 +86,44 @@
   }
 }
 
+.custom-btn {
+  padding: 12px;
+}
 .btn-kakao {
   background: #fee500;
   color: #191919;
-  padding: 12px;
+}
+.btn-dark {
+  background: #191919;
+  color: #fff;
+}
+
+.title {
+  font-size: 0.85rem;
+  font-weight: 400;
+  margin-bottom: 2.25rem;
+}
+.hr {
+  text-align: center;
+  margin: 1rem 0 !important;
+  font-size: 0.65rem;
+
+  &.m-sm {
+    margin: 0.5rem 0 !important;
+  }
+}
+.login-desc {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.after-valid {
+  position: relative;
+  &::after {
+    content: "*";
+    display: block;
+    position: absolute;
+    right: -24%;
+    top: -12%;
+    color: #b7000d;
+  }
 }
