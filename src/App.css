@@ -42,8 +42,8 @@
         display: flex;
         align-items: center;
         gap: 4px;
-        border-bottom: 0.5px solid #000;
         position: relative;
+        border-bottom: 0.5px solid #000;
 
         & input {
           width: calc(100% - 48px);
@@ -99,6 +99,10 @@
 .btn-kakao {
   background: #fee500;
   color: #191919;
+
+  & .svg-inline--fa {
+    margin-right: 8px;
+  }
 }
 .btn-dark {
   background: #191919;

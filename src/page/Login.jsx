@@ -53,7 +53,7 @@ const Login = ({ setAuthenticate }) => {
       <Row>
         <button className="custom-btn btn-kakao">
           <FontAwesomeIcon icon="fa-brands fa-kakao-talk" />
-          카카오로 로그인 ;{" "}
+          카카오 로그인
         </button>
       </Row>
       <Row>
