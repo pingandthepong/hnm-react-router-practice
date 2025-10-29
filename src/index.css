@@ -9,10 +9,22 @@ ol {
   list-style: none;
 }
 
-input {
+input,
+button {
   border: 0;
+  background: none;
 
   &:focus {
     outline: none;
   }
+}
+
+.a11y-hidden {
+  position: absolute;
+  left: -9999px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
@@ -8,19 +8,9 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 
 library.add(fas, far, fab);
 
-// * Layout *
-// 로그인/로그아웃
-// Logo
-// nav + Search Bar
-
 const Navbar = () => {
-  const navigate = useNavigate();
   const [searchText, setSearchText] = useState("");
   const MENU_LIST = ["women", "men", "kids", "home"];
-
-  const goToLogin = () => {
-    navigate("/Login");
-  };
 
   const handleDelete = () => {
     setSearchText("");
@@ -36,20 +26,20 @@ const Navbar = () => {
 
   return (
     <div className="nav-bar-wrapper">
-      <h1 className="logo">
-        <a href="#">
-          <img
-            width={128}
-            src="https://brandyhq.com/wp-content/uploads/2024/12/H-and-M-Logo.jpg"
-            alt="H&M Logo"
-          />
-        </a>
-      </h1>
-      <div className="login-button" onClick={goToLogin}>
+      <Link to="/" className="logo">
+        <h1 className="a11y-hidden">H&M</h1>
+        <img
+          width={128}
+          src="https://brandyhq.com/wp-content/uploads/2024/12/H-and-M-Logo.jpg"
+          alt="H&M Logo"
+        />
+      </Link>
+      <Link to="/Login" className="login-button">
         <FontAwesomeIcon icon="fa-regular fa-user" />
         <div>로그인</div>
-      </div>
+      </Link>
       <nav className="menu-area">
+        <h2 className="a11y-hidden">Global Navigation</h2>
         <ul className="menu-list">
           {MENU_LIST.map((menu) => (
             <li key={menu}>{menu}</li>
