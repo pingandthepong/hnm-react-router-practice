@@ -12,7 +12,7 @@ import ProductDetail from "./page/ProductDetail";
 
 // * User Story *
 // DONE: 1. 전체상품페이지, 로그인페이지, 상품디테일페이지
-// TODO: 1-1. 내비게이션 바
+// DONE: 1-1. 내비게이션 바
 // TODO: 2. 전체상품페이지: 전체 상품을 볼 수 있다.
 // TODO: 3. 로그인페이지: 로그인 페이지가 나옴
 // TODO: 4. 상품디테일 클릭 시, isLogin ? 상품디테일페이지 : 로그인페이지
