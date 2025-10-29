@@ -25,10 +25,9 @@
     }
   }
   & .logo {
+    width: max-content;
+    margin: 0 auto;
     order: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
   & .menu-area {
     order: 2;
