@@ -27,7 +27,7 @@ const Login = () => {
   });
 
   return (
-    <div>
+    <div className="login-wrapper">
       <Container>
         <Row>
           <Col>

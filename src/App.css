@@ -39,6 +39,8 @@
 
     & .menu-list {
       display: flex;
+      margin-bottom: 0;
+      padding-left: 0;
 
       & li {
         padding: 16px;
@@ -70,9 +72,6 @@
   }
 }
 
-.container {
-  padding: 40px 0;
-}
 .row {
   > *:hover img {
     transform: scale(1.1);
