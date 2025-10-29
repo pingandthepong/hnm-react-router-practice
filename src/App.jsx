@@ -21,6 +21,9 @@ import ProductDetail from "./page/ProductDetail";
 // TODO: 7. 상품 검색 가능
 
 function App() {
+  let [loading, setLoading] = useState(false);
+  let [authenticate, setAuthenticate] = useState(false); // false 비로그인, true 로그인
+
   return (
     <>
       <Navbar />

@@ -41,6 +41,5 @@ a {
 }
 
 .login-wrapper {
-  max-width: 320px;
-  margin: 40px auto 0;
+  max-width: 320px !important;
 }
