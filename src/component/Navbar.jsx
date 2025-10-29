@@ -8,7 +8,7 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 
 library.add(fas, far, fab);
 
-const Navbar = () => {
+const Navbar = ({ authenticate }) => {
   const [searchText, setSearchText] = useState("");
   const MENU_LIST = ["women", "men", "kids", "home"];
 
@@ -36,7 +36,7 @@ const Navbar = () => {
       </Link>
       <Link to="/Login" className="login-button">
         <FontAwesomeIcon icon="fa-regular fa-user" />
-        <div>로그인</div>
+        <div>{authenticate ? "로그아웃" : "로그인"}</div>
       </Link>
       <nav className="menu-area">
         <h2 className="a11y-hidden">Global Navigation</h2>

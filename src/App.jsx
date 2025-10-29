@@ -25,11 +25,12 @@ function App() {
   let [authenticate, setAuthenticate] = useState(false); // false 비로그인, true 로그인
 
   useEffect(() => {
-    console.log("aaa:", authenticate);
+    console.log("authenticate: ", authenticate);
   }, [authenticate]);
+
   return (
     <>
-      <Navbar />
+      <Navbar authenticate={authenticate} />
       <Routes>
         <Route path="/" element={<ProductAll />} />
         <Route
