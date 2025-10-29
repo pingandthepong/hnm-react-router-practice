@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
@@ -13,8 +14,13 @@ library.add(fas, far, fab);
 // nav + Search Bar
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [searchText, setSearchText] = useState("");
   const MENU_LIST = ["women", "men", "kids", "home"];
+
+  const goToLogin = () => {
+    navigate("/Login");
+  };
 
   const handleDelete = () => {
     setSearchText("");
@@ -39,7 +45,7 @@ const Navbar = () => {
           />
         </a>
       </h1>
-      <div className="login-button">
+      <div className="login-button" onClick={goToLogin}>
         <FontAwesomeIcon icon="fa-regular fa-user" />
         <div>로그인</div>
       </div>

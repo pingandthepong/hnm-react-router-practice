@@ -6,8 +6,10 @@
     order: 0;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     gap: 4px;
     padding: 16px 24px;
+    cursor: pointer;
   }
   & .logo {
     order: 1;
