@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import { fab } from "@fortawesome/free-brands-svg-icons";
+import Dropdown from "react-bootstrap/Dropdown";
 
 library.add(fas, far, fab);
 
 const Navbar = ({ authenticate }) => {
   const [searchText, setSearchText] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
   const MENU_LIST = ["women", "men", "kids", "home"];
 
   const handleDelete = () => {
@@ -24,8 +26,38 @@ const Navbar = ({ authenticate }) => {
     }
   };
 
+  const DROPDOWN_ITEMS = [
+    "회원 가입하기",
+    "여성",
+    "남성",
+    "영유아",
+    "아동",
+    "H&M HOME",
+    "기프트 카드 추첨 이벤트",
+  ];
+
   return (
     <div className="nav-bar-wrapper">
+      <Dropdown
+        className="dropdown-wide"
+        // show={}
+        onToggle={(open) => setIsOpen(open)}>
+        <Dropdown.Toggle variant="white" id="dropdown-common">
+          새로운 회원 특별가 제품과 회원 전용 이벤트를 만나보세요!
+          {isOpen ? (
+            <FontAwesomeIcon icon={"fa fa-minus"} />
+          ) : (
+            <FontAwesomeIcon icon={"fa fa-plus"} />
+          )}
+        </Dropdown.Toggle>
+        <Dropdown.Menu>
+          {DROPDOWN_ITEMS.map((item, idx) => (
+            <Dropdown.Item href="#" onClick={(e) => e.preventDefault} key={idx}>
+              {item}
+            </Dropdown.Item>
+          ))}
+        </Dropdown.Menu>
+      </Dropdown>
       <Link to="/" className="logo">
         <h1 className="a11y-hidden">H&M</h1>
         <img
