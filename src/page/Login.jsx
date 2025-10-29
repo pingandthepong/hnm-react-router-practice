@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
@@ -16,7 +17,8 @@ import {
 import * as formik from "formik";
 import * as yup from "yup";
 
-const Login = () => {
+const Login = ({ setAuthenticate }) => {
+  const navigate = useNavigate();
   const { Formik } = formik;
 
   const schema = yup.object().shape({
@@ -37,6 +39,8 @@ const Login = () => {
   const loginUser = (e) => {
     // refresh 막기
     // e.preventDefault();
+    setAuthenticate(true);
+    navigate("/");
   };
 
   return (
@@ -49,7 +53,7 @@ const Login = () => {
       <Row>
         <button className="custom-btn btn-kakao">
           <FontAwesomeIcon icon="fa-brands fa-kakao-talk" />
-          카카오로 로그인
+          카카오로 로그인 ;{" "}
         </button>
       </Row>
       <Row>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./component/Navbar";
@@ -24,12 +24,18 @@ function App() {
   let [loading, setLoading] = useState(false);
   let [authenticate, setAuthenticate] = useState(false); // false 비로그인, true 로그인
 
+  useEffect(() => {
+    console.log("aaa:", authenticate);
+  }, [authenticate]);
   return (
     <>
       <Navbar />
       <Routes>
         <Route path="/" element={<ProductAll />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/login"
+          element={<Login setAuthenticate={setAuthenticate} />}
+        />
         <Route path="/product/:id" element={<ProductDetail />} />
       </Routes>
     </>
