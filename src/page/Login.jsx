@@ -100,8 +100,6 @@ const Login = ({ setAuthenticate }) => {
                   </Form.Group>
                   <Form.Group controlId="formBasicPassword">
                     <Form.Label className="title">비밀번호</Form.Label>
-
-                    {/* <Form.Control type="password" placeholder="Password" /> */}
                     <InputGroup hasValidation>
                       <InputGroup.Text id="inputGroupPasswordPrepend">
                         <FontAwesomeIcon icon="fa-solid fa-key" />

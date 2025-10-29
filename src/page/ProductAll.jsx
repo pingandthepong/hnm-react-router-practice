@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import ProductCard from "../component/ProductCard";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap/";
 
 // DONE: 한 줄에 네 개씩 들어간다.
 // DONE: 화면이 좁아지면 1개씩 보여주기
-// DONE: 비로그인 => 상품디테일페이지 클릭 => 로그인 페이지로 이동
-// DONE: 로그인 => 상품디테일페이지 클릭 => 상품디테일페이지로 이동
 
-const ProductAll = ({ authenticate }) => {
+const ProductAll = () => {
   const [productList, setProductList] = useState([]);
-  const navigate = useNavigate();
 
   const getProducts = async () => {
     // 모든 상품 정보 가져오기
@@ -31,15 +27,7 @@ const ProductAll = ({ authenticate }) => {
         <Row>
           {productList.map((menu, idx) => {
             return (
-              <Col
-                md={3}
-                key={idx}
-                style={{ cursor: "pointer" }}
-                onClick={() =>
-                  authenticate
-                    ? navigate(`/product/${idx}`)
-                    : navigate("/login")
-                }>
+              <Col md={3} key={idx} style={{ cursor: "pointer" }}>
                 <ProductCard item={menu} />
               </Col>
             );
