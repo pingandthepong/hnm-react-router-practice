@@ -43,3 +43,6 @@ a {
 .login-wrapper {
   max-width: 320px !important;
 }
+.badge {
+  font-size: 0.65rem !important;
+}
