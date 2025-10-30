@@ -12,7 +12,7 @@
         },
         {
             "id":1,
-            "img":"https://noona-hnm.netlify.app/ankle-jeans.jpeg",
+            // "img":"https://noona-hnm.netlify.app/ankle-jeans.jpeg",
             "title":"슬림핏 맘 하이웨이스트 앵클 진",
             "price":29900,
             "choice":true,
