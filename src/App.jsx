@@ -24,9 +24,9 @@ import PrivateRoute from "./route/PrivateRoute";
 function App() {
   let [loading, setLoading] = useState(false);
   let [authenticate, setAuthenticate] = useState(true); // false 비로그인, true 로그인
-  // const myUrl =
-  //   "https://my-json-server.typicode.com/pingandthepong/hnm-react-router-practice/";
-  const myUrl = " http://localhost:3000/";
+  const myUrl =
+    "https://my-json-server.typicode.com/pingandthepong/hnm-react-router-practice/";
+  // const myUrl = " http://localhost:3000/";
 
   useEffect(() => {
     console.log("authenticate: ", authenticate);
