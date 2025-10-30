@@ -27,6 +27,15 @@ const ProductDetail = ({ myUrl }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const [openDropdowns, setOpenDropdowns] = useState({
+    guide: false,
+    fit: false,
+    material: false,
+  });
+  const handleToggle = (key, isOpen) => {
+    setOpenDropdowns((prev) => ({ ...prev, [key]: isOpen }));
+  };
+
   const getProductDetail = async () => {
     try {
       let url = `${myUrl}products/${id}`;
@@ -53,115 +62,99 @@ const ProductDetail = ({ myUrl }) => {
           </div>
         </Col>
         <Col className="detail-info-wrap">
-          <h2
-            style={{
-              fontSize: ".85rem",
-              fontWeight: "400",
-              marginBottom: "0",
-            }}>
-            {product?.title}
-          </h2>
-          <p
-            style={{
-              fontSize: ".85rem",
-              fontWeight: "700",
-              marginBottom: "0",
-            }}>
-            ₩{price}
-          </p>
-          <p>
-            {product?.choice ? (
-              <Badge pill bg="primary">
-                Conscious Choice
-              </Badge>
-            ) : (
-              ""
-            )}
-          </p>
-          <Dropdown>
-            <Dropdown.Toggle variant="white" id="dropdown-basic">
-              사이즈 선택
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu>
-              {sizes.map((size, idx) => (
-                <Dropdown.Item href="#" key={idx}>
-                  {size}
-                </Dropdown.Item>
-              ))}
-            </Dropdown.Menu>
-          </Dropdown>
-
-          <div className="mt-4 text-end">
-            <Button
-              variant="white"
-              onClick={handleShow}
+          <div className="detail-info-wrap-inner">
+            <h2
               style={{
-                fontSize: ".75rem",
-                textDecoration: "underline",
+                fontSize: ".85rem",
+                fontWeight: "400",
+                marginBottom: "0",
               }}>
-              사이즈 가이드
-            </Button>
-
-            <Offcanvas show={show} onHide={handleClose} placement={"end"}>
-              <Offcanvas.Header closeButton>
-                <Offcanvas.Title>사이즈 가이드</Offcanvas.Title>
-              </Offcanvas.Header>
-              <Offcanvas.Body>
-                <Dropdown onToggle={(open) => setIsOpen(open)}>
-                  <Dropdown.Toggle variant="white" id="dropdown-common-2">
-                    측정 방법
-                    {isOpen ? (
-                      <FontAwesomeIcon icon={"fa fa-minus"} />
-                    ) : (
-                      <FontAwesomeIcon icon={"fa fa-plus"} />
-                    )}
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    <Dropdown.Item href="#">방법1</Dropdown.Item>
-                    <Dropdown.Item href="#">방법2</Dropdown.Item>
-                    <Dropdown.Item href="#">방법3</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-              </Offcanvas.Body>
-            </Offcanvas>
-          </div>
-          <div className="d-grid mt-2">
-            <Button variant="dark" type="submit" className="bdrs-0">
-              추가
-            </Button>
-          </div>
-          <div className="d-grid mt-4">
-            <Dropdown onToggle={(open) => setIsOpen(open)}>
-              <Dropdown.Toggle variant="white" id="dropdown-common-2">
-                설명 & 핏
-                {isOpen ? (
-                  <FontAwesomeIcon icon={"fa fa-minus"} />
-                ) : (
-                  <FontAwesomeIcon icon={"fa fa-plus"} />
-                )}
+              {product?.title}
+            </h2>
+            <p
+              style={{
+                fontSize: ".85rem",
+                fontWeight: "700",
+                marginBottom: "0",
+              }}>
+              ₩{price}
+            </p>
+            <p>
+              {product?.choice ? (
+                <Badge pill bg="primary">
+                  Conscious Choice
+                </Badge>
+              ) : (
+                ""
+              )}
+            </p>
+            <Dropdown>
+              <Dropdown.Toggle variant="white" id="dropdown-basic">
+                사이즈 선택
               </Dropdown.Toggle>
               <Dropdown.Menu>
-                <Dropdown.Item href="#">1</Dropdown.Item>
-                <Dropdown.Item href="#">2</Dropdown.Item>
-                <Dropdown.Item href="#">3</Dropdown.Item>
+                {sizes.map((size, idx) => (
+                  <Dropdown.Item href="#" key={idx}>
+                    {size}
+                  </Dropdown.Item>
+                ))}
               </Dropdown.Menu>
             </Dropdown>
-            <Dropdown onToggle={(open) => setIsOpen(open)}>
-              <Dropdown.Toggle variant="white" id="dropdown-common-2">
-                소재
-                {isOpen ? (
-                  <FontAwesomeIcon icon={"fa fa-minus"} />
-                ) : (
-                  <FontAwesomeIcon icon={"fa fa-plus"} />
-                )}
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item href="#">1</Dropdown.Item>
-                <Dropdown.Item href="#">2</Dropdown.Item>
-                <Dropdown.Item href="#">3</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+            <div className="mt-4 text-end">
+              <Button
+                variant="white"
+                onClick={handleShow}
+                style={{
+                  fontSize: ".75rem",
+                  textDecoration: "underline",
+                }}>
+                사이즈 가이드
+              </Button>
+              <Offcanvas show={show} onHide={handleClose} placement={"end"}>
+                <Offcanvas.Header closeButton>
+                  <Offcanvas.Title>사이즈 가이드</Offcanvas.Title>
+                </Offcanvas.Header>
+                <Offcanvas.Body>
+                  <Dropdown onToggle={(open) => handleToggle("guide", open)}>
+                    <Dropdown.Toggle variant="white" id="dropdown-common-2">
+                      측정 방법
+                      {isOpen ? (
+                        <FontAwesomeIcon icon={"fa fa-minus"} />
+                      ) : (
+                        <FontAwesomeIcon icon={"fa fa-plus"} />
+                      )}
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                      <Dropdown.Item href="#">방법1</Dropdown.Item>
+                      <Dropdown.Item href="#">방법2</Dropdown.Item>
+                      <Dropdown.Item href="#">방법3</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </Offcanvas.Body>
+              </Offcanvas>
+            </div>
+            <div className="d-grid mt-2">
+              <Button variant="dark" type="submit" className="bdrs-0">
+                추가
+              </Button>
+            </div>
+            <div className="d-grid mt-4">
+              <Dropdown onToggle={(open) => handleToggle("fit", open)}>
+                <Dropdown.Toggle variant="white" id="dropdown-common-2">
+                  설명 & 핏
+                  {isOpen ? (
+                    <FontAwesomeIcon icon={"fa fa-minus"} />
+                  ) : (
+                    <FontAwesomeIcon icon={"fa fa-plus"} />
+                  )}
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item href="#">1</Dropdown.Item>
+                  <Dropdown.Item href="#">2</Dropdown.Item>
+                  <Dropdown.Item href="#">3</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </div>
           </div>
         </Col>
       </Row>

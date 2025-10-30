@@ -179,6 +179,11 @@
 
 .detail-info-wrap {
   padding-top: 100px;
+
+  & .detail-info-wrap-inner {
+    max-width: 320px;
+    margin: 0 auto;
+  }
 }
 @media (max-width: 991px) {
   .detail-info-wrap {
