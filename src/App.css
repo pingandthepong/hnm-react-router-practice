@@ -188,6 +188,10 @@
 @media (max-width: 991px) {
   .detail-info-wrap {
     padding-top: 20px;
+
+    & .detail-info-wrap-inner {
+      max-width: 100%;
+    }
   }
 }
 

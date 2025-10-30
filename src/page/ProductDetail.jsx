@@ -56,7 +56,7 @@ const ProductDetail = ({ myUrl }) => {
       <h1 className="a11y-hidden">상품 상세 페이지</h1>
 
       <Row>
-        <Col>
+        <Col style={{ padding: "0" }}>
           <div className="image-wrapper">
             <img src={product?.img} alt={`${product?.title} 이미지`} />
           </div>
@@ -133,7 +133,7 @@ const ProductDetail = ({ myUrl }) => {
                 </Offcanvas.Body>
               </Offcanvas>
             </div>
-            <div className="d-grid mt-2">
+            <div className="d-grid p-2 sticky-btn">
               <Button variant="dark" type="submit" className="bdrs-0">
                 추가
               </Button>
