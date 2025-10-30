@@ -52,13 +52,17 @@ const ProductDetail = ({ myUrl }) => {
   }, []);
 
   return (
-    <Container>
+    <Container fluid>
       <h1 className="a11y-hidden">상품 상세 페이지</h1>
 
       <Row>
-        <Col style={{ padding: "0" }}>
+        <Col lg={6} md={12} className="p-0">
           <div className="image-wrapper">
-            <img src={product?.img} alt={`${product?.title} 이미지`} />
+            <img
+              src={product?.img}
+              alt={`${product?.title} 이미지`}
+              className="w-100"
+            />
           </div>
         </Col>
         <Col className="detail-info-wrap">
