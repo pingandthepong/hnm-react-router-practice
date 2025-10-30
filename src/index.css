@@ -43,3 +43,7 @@ a {
 .badge {
   font-size: 0.65rem !important;
 }
+
+.container {
+  padding-bottom: 100px;
+}

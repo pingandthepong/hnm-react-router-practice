@@ -143,7 +143,8 @@
   border-bottom: 0.5px solid gray;
 }
 
-#dropdown-common {
+#dropdown-common,
+#dropdown-common-2 {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -171,4 +172,20 @@
       font-size: 0.75rem !important;
     }
   }
+}
+#dropdown-common-2 + .dropdown-menu.show {
+  border-bottom: 0;
+}
+
+.detail-info-wrap {
+  padding-top: 100px;
+}
+@media (max-width: 991px) {
+  .detail-info-wrap {
+    padding-top: 20px;
+  }
+}
+
+#dropdown-basic {
+  border: 1px solid #000;
 }
