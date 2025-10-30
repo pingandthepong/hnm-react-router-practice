@@ -36,12 +36,9 @@ a {
   border-radius: 0 !important;
 }
 
-.container {
-  padding: 40px 0;
-}
-
 .login-wrapper {
   max-width: 320px !important;
+  padding: 40px 0;
 }
 .badge {
   font-size: 0.65rem !important;
