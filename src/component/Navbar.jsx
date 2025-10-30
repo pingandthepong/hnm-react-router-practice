@@ -5,11 +5,11 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import { fab } from "@fortawesome/free-brands-svg-icons";
-import { Dropdown, Offcanvas, Button } from "react-bootstrap";
+import { Dropdown, Offcanvas, Button, Stack } from "react-bootstrap";
 
 library.add(fas, far, fab);
 
-// TODO: md 이하부터는 햄버거 메뉴로 변경
+// DONE: md 이하부터는 햄버거 메뉴로 변경
 
 const Navbar = ({ authenticate, setAuthenticate }) => {
   const navigate = useNavigate();
@@ -147,12 +147,36 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
             ))}
           </ul>
           <hr />
-          <Link
-            to="/Login"
-            onClick={() => setShowHamburger(false)}
-            className="text-decoration-none text-dark">
-            {authenticate ? "Log Out" : "Log In"}
-          </Link>
+
+          <div className="icons-wrap">
+            <Stack gap={3}>
+              <div className="search-wrap">
+                <FontAwesomeIcon icon="fa-solid fa-search" />
+                <input
+                  type="text"
+                  name=""
+                  id=""
+                  placeholder="검색"
+                  value={searchText}
+                  onChange={(e) => setSearchText(e.target.value)}
+                  onKeyDown={(e) => handleKeyDown(e)}
+                />
+                {searchText && (
+                  <FontAwesomeIcon
+                    icon="fa-solid fa-xmark"
+                    onClick={() => setSearchText("")}
+                  />
+                )}
+              </div>
+              <Link
+                to="/Login"
+                onClick={() => setShowHamburger(false)}
+                className="text-decoration-none text-dark">
+                <FontAwesomeIcon icon="fa-regular fa-user" />
+                {authenticate ? "Log Out" : "Log In"}
+              </Link>
+            </Stack>
+          </div>
         </Offcanvas.Body>
       </Offcanvas>
     </>
