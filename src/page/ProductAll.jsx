@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import ProductCard from "../component/ProductCard";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap/";
@@ -8,10 +9,13 @@ import { Container, Row, Col } from "react-bootstrap/";
 
 const ProductAll = ({ myUrl }) => {
   const [productList, setProductList] = useState([]);
+  const [query, setQuery] = useSearchParams();
 
   const getProducts = async () => {
+    let searchQuery = query.get("q") || "";
+
     // 모든 상품 정보 가져오기
-    let url = `${myUrl}products/`;
+    let url = `${myUrl}products/?q=${searchQuery}`;
     let response = await fetch(url);
     let data = await response.json();
     setProductList(data);
@@ -19,7 +23,7 @@ const ProductAll = ({ myUrl }) => {
 
   useEffect(() => {
     getProducts();
-  }, []);
+  }, [query]);
 
   return (
     <div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
@@ -9,20 +9,18 @@ import Dropdown from "react-bootstrap/Dropdown";
 
 library.add(fas, far, fab);
 
-const Navbar = ({ authenticate }) => {
+const Navbar = ({ authenticate, setAuthenticate }) => {
+  const navigate = useNavigate();
   const [searchText, setSearchText] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const MENU_LIST = ["women", "men", "kids", "home"];
 
-  const handleDelete = () => {
-    setSearchText("");
-  };
-
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      handleDelete();
-      console.log("TODO: 검색 기능 채워넣기");
-      // handleSubmit(); // 작성한 검색어 검색 요청 함수
+      // DONE: 입력한 검색어를 읽어와서
+      let keyword = e.target.value;
+      // DONE: URL 바꿔주기
+      navigate(`/?q=${keyword}`);
     }
   };
 
@@ -36,6 +34,11 @@ const Navbar = ({ authenticate }) => {
     "기프트 카드 추첨 이벤트",
   ];
 
+  const toLogOut = (e) => {
+    if (authenticate) {
+      setAuthenticate(false);
+    }
+  };
   return (
     <>
       <Dropdown className="dropdown-wide" onToggle={(open) => setIsOpen(open)}>
@@ -83,18 +86,19 @@ const Navbar = ({ authenticate }) => {
                 placeholder="검색"
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
-                onKeyDown={handleKeyDown}
+                onKeyDown={(e) => handleKeyDown(e)}
               />
               {searchText && (
                 <FontAwesomeIcon
                   icon="fa-solid fa-xmark"
-                  onClick={handleDelete}
+                  onClick={() => setSearchText("")}
                 />
               )}
             </div>
-            <Link to="/Login" className="login-button">
+            <Link to="/Login" className="login-button" onClick={toLogOut}>
               <FontAwesomeIcon icon="fa-regular fa-user" />
               <div>{authenticate ? "Log Out" : "Log In"}</div>
+              {/* <div>Log In</div> */}
             </Link>
           </div>
         </nav>

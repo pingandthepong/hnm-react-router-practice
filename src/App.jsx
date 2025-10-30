@@ -19,11 +19,11 @@ import PrivateRoute from "./route/PrivateRoute";
 // DONE: 4. 상품디테일 클릭 시, isLogin ? 상품디테일페이지 : 로그인페이지
 // DONE: 5. 로그아웃버튼 클릭 시, 로그아웃 & 상품디테일 페이지 볼 수 없음 & 다시 로그인페이지 보임
 // DONE: 6. 로그인을 하면 로그아웃이 보이고, 로그아웃을 하면 로그인이 보인다.
-// TODO: 7. 상품 검색 가능
+// DONE: 7. 상품 검색 가능
 
 function App() {
   let [loading, setLoading] = useState(false);
-  let [authenticate, setAuthenticate] = useState(true); // false 비로그인, true 로그인
+  let [authenticate, setAuthenticate] = useState(false); // false 비로그인, true 로그인
   const myUrl =
     "https://my-json-server.typicode.com/pingandthepong/hnm-react-router-practice/";
   // const myUrl = " http://localhost:3000/";
@@ -34,7 +34,7 @@ function App() {
 
   return (
     <>
-      <Navbar authenticate={authenticate} />
+      <Navbar authenticate={authenticate} setAuthenticate={setAuthenticate} />
       <Routes>
         <Route path="/" element={<ProductAll myUrl={myUrl} />} />
         <Route
